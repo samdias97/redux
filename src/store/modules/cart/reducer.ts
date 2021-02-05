@@ -1,15 +1,16 @@
 import { Reducer } from 'redux';
 import produce from 'immer';
-import { ICartState } from './types';
+import { ICartState, ActionTypes } from './types';
 
 const INITIAL_STATE: ICartState = {
   items: [],
+  failedStockCheck: [],
 };
 
 // eslint-disable-next-line consistent-return
 const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => produce(state, (draft) => {
   switch (action.type) {
-    case 'ADD_PRODUCT_TO_CART': {
+    case ActionTypes.addProductToCartRequest: {
       const { product } = action.payload;
 
       const productInCartIndex = draft.items.findIndex((item) => item.product.id === product.id);
@@ -23,6 +24,12 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => produce(sta
           quantity: 1,
         });
       }
+
+      break;
+    }
+    case ActionTypes.addProductToCartFailure: {
+      // Adicionando ID do produto que falhou na verificação de estoque
+      draft.failedStockCheck.push(action.payload.productId);
 
       break;
     }

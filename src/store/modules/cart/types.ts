@@ -1,3 +1,11 @@
+// eslint-disable-next-line no-shadow
+export enum ActionTypes {
+  // "enum" representa uma propriedade que tem um valor
+  addProductToCartRequest = 'ADD_PRODUCT_TO_CART_REQUEST',
+  addProductToCartSuccess = 'ADD_PRODUCT_TO_CART_SUCCESS',
+  addProductToCartFailure = 'ADD_PRODUCT_TO_CART_FAILURE',
+}
+
 export interface IProduct {
   id: number;
   title: string;
@@ -11,4 +19,5 @@ export interface ICartItem {
 
 export interface ICartState {
   items: ICartItem[];
+  failedStockCheck: number[];
 }
