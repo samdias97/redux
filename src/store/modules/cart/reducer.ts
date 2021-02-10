@@ -10,7 +10,7 @@ const INITIAL_STATE: ICartState = {
 // eslint-disable-next-line consistent-return
 const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => produce(state, (draft) => {
   switch (action.type) {
-    case ActionTypes.addProductToCartRequest: {
+    case ActionTypes.addProductToCartSuccess: {
       const { product } = action.payload;
 
       const productInCartIndex = draft.items.findIndex((item) => item.product.id === product.id);

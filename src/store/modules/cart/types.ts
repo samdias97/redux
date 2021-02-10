@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-shadow
 export enum ActionTypes {
   // "enum" representa uma propriedade que tem um valor
   addProductToCartRequest = 'ADD_PRODUCT_TO_CART_REQUEST',
